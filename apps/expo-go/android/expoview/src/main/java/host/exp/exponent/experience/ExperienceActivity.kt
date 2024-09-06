@@ -322,7 +322,6 @@ open class ExperienceActivity : BaseExperienceActivity(), StartReactInstanceDele
     reactSurface?.view?.let {
       setReactRootView(it)
     }
-//        setContentView(reactSurface?.view)
   }
 
   fun onEvent(event: ExperienceDoneLoadingEvent) {
