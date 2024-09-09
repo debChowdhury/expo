@@ -243,7 +243,7 @@ class InternalHeadlessAppLoader(private val context: Context) :
     val host = ExpoGoReactNativeHost(
       context,
       instanceManagerBuilderProperties,
-      jsBundlePath
+      mainModuleName = manifest!!.getMainModuleName()
     )
     val wrapper = ReactNativeHostWrapper(context, host)
     val reactHost = ReactHostFactory.createFromReactNativeHost(context, wrapper)
