@@ -121,7 +121,7 @@ class ExpoHandlingDelegate(protected val context: Context) : HandlingDelegate {
    * notification that should not be presented to the user.
    */
   private fun Notification.shouldPresent(): Boolean {
-    return !(notificationRequest.content.title.isNullOrEmpty() && notificationRequest.content.text.isNullOrEmpty())
+    return !(notificationRequest.content.getTitle().isNullOrEmpty() && notificationRequest.content.getText().isNullOrEmpty())
   }
 
   override fun handleNotificationResponse(notificationResponse: NotificationResponse) {

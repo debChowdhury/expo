@@ -61,7 +61,6 @@ object DebugLogging {
     Log.i("expo-notifications", logMessage)
   }
 
-  @RequiresApi(Build.VERSION_CODES.O)
   fun logNotification(caller: String, notification: Notification) {
     if (!BuildConfig.DEBUG) {
       // Do not log for release/production builds
@@ -70,15 +69,14 @@ object DebugLogging {
     val logMessage =
       """
       $caller:
-        notification.notificationRequest.content.title: ${notification.notificationRequest.content.title}
-        notification.notificationRequest.content.subtitle: ${notification.notificationRequest.content.subtitle}
-        notification.notificationRequest.content.text: ${notification.notificationRequest.content.text}
-        notification.notificationRequest.content.sound: ${notification.notificationRequest.content.sound}
+        notification.notificationRequest.content.title: ${notification.notificationRequest.content.getTitle()}
+        notification.notificationRequest.content.subtitle: ${notification.notificationRequest.content.getSubtitle()}
+        notification.notificationRequest.content.text: ${notification.notificationRequest.content.getText()}
+        notification.notificationRequest.content.sound: ${notification.notificationRequest.content.getSoundName()}
         notification.notificationRequest.content.channelID: ${notification.notificationRequest.trigger.notificationChannel}
-        notification.notificationRequest.content.body: ${notification.notificationRequest.content.body}
-        notification.notificationRequest.content.color: ${notification.notificationRequest.content.color}
-        notification.notificationRequest.content.vibrationPattern: ${notification.notificationRequest.content.vibrationPattern.contentToString()}
-        notification.notificationRequest.trigger.notificationChannel: ${notification.notificationRequest.trigger.notificationChannel}
+        notification.notificationRequest.content.body: ${notification.notificationRequest.content.getBody()}
+        notification.notificationRequest.content.color: ${notification.notificationRequest.content.getColor()}
+        notification.notificationRequest.content.vibrationPattern: ${notification.notificationRequest.content.getVibrationPattern().contentToString()}
         notification.notificationRequest.identifier: ${notification.notificationRequest.identifier}
       """.trimIndent()
 
